@@ -1,0 +1,401 @@
+---
+title: "RAP Skeleton Lite Demo"
+lang: "en"
+output: 
+  html_document:
+    code_folding: show
+    toc: true
+    toc_float: true
+    toc_depth: 4
+    code_download: no
+    css: "style.css"
+knit: (function(input, ...) {
+    rmarkdown::render(
+      input,
+      output_dir = "../outputs/",
+      envir = globalenv()
+    )
+  })
+---
+
+```{r settings, include=FALSE}
+# This code sets the default options for all chunks in this file
+knitr::opts_chunk$set(
+  message = FALSE, warning = FALSE, echo = FALSE
+)
+
+if (!require(here)) install.packages("here")
+library(here)
+
+source(paste0(here(), "/code/data_prep.R"))
+```
+
+<div data-nics-theme="`r nics_theme`">
+
+`r f_banner(title = "RAP Skeleton Lite Demo")`
+
+## Introduction
+
+This report acts as a demo which outlines the features available in the RAP Skeleton Lite. This can be used for the creation of simple HTML documents such as background quality reports or quickly converting documents originally produced in Microsoft Word.
+
+`r f_borderline()`
+
+## CSS file for NISRA branding
+
+The style.css file, which is found in the project’s code folder is used to specify the visual presentation and styling of this output. It has been written to comply with NISRA and departmental branding material guidance and it has also been written with accessibility guidance in mind.\
+
+Changes to the visual presentation of the document can be made by editing the `style.css` file. More information on how to write CSS code can be found [on the W3 schools website](https://www.w3schools.com/css/default.asp).
+
+`r f_borderline()`
+
+## NISRA banner
+
+The banner, which can be seen at the very top of this document, is called using the function:
+
+```{Banner , echo = TRUE, eval = FALSE}
+`r f_banner(title = "RAP Skeleton Lite Demo")`
+```
+
+This can be configured in the __config.R__ script by changing the value of `nics_theme`:
+
+```
+nics_theme <- "dof"
+```
+
+`nics_theme` accepts any of the following values: "teo", "daera", "dfc", "de", "dfe", "dof", "dfi", "doh", "doj", "bso". Setting nics_theme to your department will automatically update the relevant colours, logos, alt texts and departmental links contained in the banner (and throughout the rest of the document).
+
+The title and subtitle can be defined when calling the function:
+
+```
+f_banner(title = "Rap Skeleton Lite Demo", subtitle = "Optional Subtitle")
+```
+
+`r f_borderline()`
+
+## Section separators
+
+The following function is included in the code and it outputs the section separators seen throughout the document:
+
+```{borderline, echo = TRUE, eval = FALSE}
+`r f_borderline()`
+```
+
+The colours are automatically determined by the departmental colour theme chosen in __config.R__.
+
+`r f_borderline()`
+
+## Definition boxes
+
+If you would like to highlight a particular piece of text, such as a definition or block quote. You can use the function:
+
+```
+f_definition_box(
+  "The function for a definition box is defined in the Functions.R file and can be called using this function"
+)
+```
+```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%"}
+f_definition_box(
+  "The function for a definition box is defined in the Functions.R file and can be called using this function"
+)
+```
+
+`r f_borderline()`
+
+## Custom Boxes
+
+You can enhance the visual presentation of your reports by embedding custom HTML and CSS directly into your document. One way to achieve this is by using div boxes to highlight specific data or information, as shown in the example below.
+
+```
+<div class="container">
+  <div class="box">
+      <div>Population registered with a health service</div>
+      <div>dentist</div>
+      <div class="value">70%</div>
+  </div>
+  <div class="box">
+      <div>Pupils enrolled in pre-school Education,</div>
+      <div>2022</div>
+      <div class="value">22,558</div>
+  </div>
+
+```
+
+```
+<!--html_preserve-->
+<div class="container">
+  <div class="box">
+      <div>Population registered with a health service dentist</div>
+      <div class="value">70%</div>
+  </div>
+  <div class="box">
+      <div>Pupils enrolled in pre-school Education, 2022</div>
+      <div class="value">22,558</div>
+  </div>
+<!--/html_preserve-->
+```
+How It Works:
+
+•	HTML Structure: The code uses standard HTML for creating a grid of boxes. Each box contains a title and a value, which can be customized based on your content.
+
+•	CSS for Styling: CSS has been added to `style.css` and is used to control the layout, colors, spacing, and overall appearance of the boxes.
+
+`r f_borderline()`
+
+## Images
+
+The NISRA logo as well as logos for all departments are found in the project folder: `(.../rap-skeleton-lite/images/)` You should save any images you use in this folder.
+
+Call an image in your rmd file (Ensuring your file path uses forward slashes) using:
+
+```         
+![alt text](../example/example)
+```
+
+eg:
+
+![](../images/NISRA_logo_bilingual_colour.png)
+
+Alternatively, for more control over the formatting of your image you can use HTML. This approach is especially useful if you need to customize how images are displayed (e.g. setting width, height and alignment). Learn more about adding images using HTML [here](https://www.w3schools.com/html/html_images.asp#:~:text=The%20HTML%20%3Cimg%3E%20tag%20is%20used)
+
+`r f_borderline()`
+
+## Tables
+
+This section has a number of basic tables. The Good Practice Team recommend that only small demonstration tables should be included in the publication itself. Demonstration tables are small tables which highlight one or two messages clearly and are supported by commentary.
+
+When it comes to accessibility, a good rule of thumb is to use a simple structure. Use a simple table matrix with a single row of column headers describing what is in each column. Other considerations are as follows:
+
+-   don’t merge cells
+-   don’t have blank rows or columns
+-   every column should have a heading
+-   make sure all headings and labels are visible
+-   use consistent rounding
+-   left align text, or row labels, right align numbers
+-   use thousand comma separator
+-   avoid abbreviations or make sure they are explained fully
+-   use caption for table titles
+-   put any data labels in the headings such as % or millions or STG
+-   don’t use symbols such as \* or superscripts to create notes or explanations
+
+### **Table 1**
+
+The following code outputs a table using the Kable package. More help with kable can be found in the [Rmarkdown cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/kable.html).
+
+```{r echo=TRUE, class.source = 'fold-hide', message=FALSE, out.width="100%"}
+data.frame(
+  Option_A = c(
+    "Single (never married or never legally registered a civil partnership) ",
+    "Married or in a legally registered civil partnership",
+    "Separated (but still legally married or still legally in a civil partnership)",
+    "Divorced or formerly in a civil partnership which is now legally dissolved",
+    "Widowed or surviving member of a legally registered civil partnership",
+    "No code required (for under 16s)"
+  ),
+  Option_B = c(
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6"
+  )
+) %>%
+  select("Option A" = Option_A, "Option B" = Option_B) %>%
+  kbl(escape = FALSE, align = "lr") %>%
+  kable_styling(full_width = TRUE)
+```
+
+### **Table 2 (Pagination)**
+
+For longer tables, you may want to use pagination. The following table is created using the DT package. [More help with the DT package can be found here](https://rstudio.github.io/DT/).
+
+```{r, echo=TRUE, class.source = 'fold-hide', warning=FALSE, message=FALSE, out.width="100%"}
+datatable(df_mye_year_gender_t,
+  # DT creates row numbers by default. Suppress to ensure all cols have a header
+  rownames = FALSE,
+  # Rename column headers to make them descriptive
+  colnames = c(
+    "Mid Year Ending",
+    "Females",
+    "Males",
+    "NI Population Total"
+  ),
+  caption = paste0("Number of males and females making up the total NI
+                   population from ", earliest_year, -latest_year),
+  # left align first column and add thousand separator to numbers
+  options = list(columnDefs = list(list(className = "dt-left", targets = 0)))
+) %>%
+  formatRound(c("Females", "Males", "All persons"),
+    digits = 0, interval = 3,
+    mark = ","
+  )
+```
+
+`r f_borderline()`
+
+## Inline R (automation of values)
+
+You can automate the presentation of stats by using 'Inline R'.
+
+This is where you write a single line of R code to place a single variable within your report:
+
+Creation of an example variable:
+
+```{r}
+example_stat <- mean(c(10, 14, 26, 87))
+```
+
+```
+example_stat <- mean(c(10, 14, 26, 87))
+```
+
+Printing the example variable: `r example_stat`
+
+Where "example_stat" can be a variable you have already defined earlier in your code.
+
+`r f_borderline()`
+
+## Hyperlinks
+
+Add a hyperlink using:
+
+```         
+[Text to display](URL path)
+```
+
+Example:
+
+```         
+[GSS harmonisation standards and guidance](https://analysisfunction.civilservice.gov.uk/government-statistical-service-and-statistician-group/gss-support/gss-harmonisation-support/harmonised-standards-and-guidance/)
+```
+
+`r f_borderline()`
+
+## Table of contents
+
+### Header Tags (h3)
+
+A key element is using header tags to structure your document. Screen readers use these to scan and navigate documents so it's important that headings are tagged correctly. The colour used in these headings is #1460aa rather than NISRA blue to meet accessibility standards.
+
+-   the title of the document is tagged as h1, don't use elsewhere
+-   don't use heading styles to format text that isn't a heading (for example to emphasise a point)
+-   don't use bold, colour or text size to create visual headings without tagging at the appropriate level
+-   don't skip any heading levels, follow order h1, h2, h3, h4
+
+More detailed guidance on writing for web is available in the Drupal user manual published by Dissemination Branch. You can find the [Drupal user manual](https://nicsonline.sharepoint.com/sites/TM-DOF-NISRATEAM/SitePages/DISSEMINATION%20NISRA-Website.aspx?ct=1727952358098&or=Teams-HL&ga=1&LOF=1) and [other accessibility guidance](https://nicsonline.sharepoint.com/sites/TM-DOF-NISRATEAM/SitePages/DISSEMINATION%20Accessibility.aspx?ct=1727952463891&or=Teams-HL&ga=1&LOF=1) on NISRA Teams Channel.
+
+The table of contents is initialised and the parameters are set using the following code:
+
+```         
+html_document:
+  toc: true
+  toc_float: true
+  toc_depth: 4
+```
+
+toc – can be true or false, determines whether table of contents is shown\
+toc_float – can be true or false, determines whether table of contents appears at top of page or at the side\
+toc_depth – enter a number, determines the level of nesting headings which appear in the table of contents
+
+\
+
+Headings and sub headings are then defined and registered in the table of contents using hash keys:
+
+```
+## Heading
+
+### Subheading
+```
+
+### Example subheading
+
+`r f_borderline()`
+
+## Lists
+
+Unordered lists can be created using \*, + and - symbols:
+
+```         
+* Item 1
+* Item 2
+    + Item 2a
+        - Item 2a.a
+        - Item 2a.b
+    + Item 2b
+* Item 3
+    + Item 3a
+```
+
+Output:
+
+-   Item 1
+-   Item 2
+    -   Item 2a
+        -   Item 2a.a
+        -   Item 2a.b
+    -   Item 2b
+-   Item 3
+    -   Item 3a
+
+Ordered lists can be created using numbers followed by the contents with a space in between. Similar to unordered list, you can add extra layers as needed:
+
+```         
+1. Item 1
+2. Item 2
+3. Item 3
+    + Item 3a
+    + Item 3b
+```
+
+output:
+
+1. Item 1
+2. Item 2
+3. Item 3
+    + Item 3a
+    + Item 3b
+
+`r f_borderline()`
+
+## Useful resources/links
+
+To help users get stated, the following resources provide quick reference guides and detailed instructions on how to use R Markdown efficiently.
+
+- [R Markdown CHEATSHEET](https://rstudio.github.io/cheatsheets/rmarkdown.pdf#:~:text=Dynamic%20Documents%20%C2%B7%20Knit%20together%20plots,#:~:text=Dynamic%20Documents%20%C2%B7%20Knit%20together%20plots,)
+
+- [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/cheat-sheets.html)
+
+`r f_borderline()`
+
+## NISRA Footer
+
+The NISRA footer is defined in `functions.R` and can be called using:
+
+```{footer, echo = TRUE, eval = FALSE}
+`r f_footer()`
+```
+
+`r f_footer()`
+
+</div>
+
+```{js}
+
+// Function to add tabs to table of contents
+
+function tabOrder() {
+  
+  // Make side menu tabbable
+
+  var headings = document.getElementsByClassName('tocify-item list-group-item');
+  
+  for (let i = 0; i < headings.length; i ++) {
+    headings[i].innerHTML = "<a href='#" + headings[i].getAttribute("data-unique") + "'>" + headings[i].innerHTML +  "</a>";
+  }
+
+  
+};
+
+// Instruct web browser to run above function when loaded
+window.onload = tabOrder;
+```
