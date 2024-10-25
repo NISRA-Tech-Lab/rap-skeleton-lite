@@ -2,11 +2,11 @@
 
 ## What is the RAP Skeleton Lite?
 
-The RAP Skeleton Lite is a reusable template and guide for the creation of simple documents such as BQRs, or simply converting existing documents from MS Word. It uses the R Markdown coding language (written in line with the [tidyverse style guide](https://style.tidyverse.org/)) to create HTML statistical publications. The RAP Skeleton Lite is stored as a repository on the Tech Lab GitHub page and can be accessed by downloading the repository as a ZIP file (Git knowledge is not required for this, see further instructions found below).
+The RAP Skeleton Lite (RS-lite) is a reusable template and guide for the creation of simple documents such as BQRs, or simply converting existing documents from MS Word. It uses the R Markdown coding language (written in line with the [tidyverse style guide](https://style.tidyverse.org/)) to create HTML statistical publications. The RS-lite is stored as a repository on the Tech Lab GitHub page and can be accessed by downloading the repository as a ZIP file (Git knowledge is not required for this, see further instructions found below).
 
 ## Software recommendations
 
-To ensure compatability and smooth functioning of the RAP Skeleton Lite, it is important that you have the latest versions of R and R studio installed.
+To ensure compatability and smooth functioning of the RS-lite, it is important that you have the latest versions of R and R studio installed.
 
 - R
   
@@ -22,7 +22,7 @@ To ensure compatability and smooth functioning of the RAP Skeleton Lite, it is i
 
 ## Downloading the RAP Skeleton Lite
 
-In order to work with the RAP Skeleton Lite the project folder must first be downloaded onto your local computer. Follow these steps to complete this process:
+In order to work with the RS-lite the project folder must first be downloaded onto your local computer. Follow these steps to complete this process:
 
 -   Download the RAP Skeleton Lite as a ZIP file by clicking on the green code button and selecting ‘Download ZIP’ on the rap-skeleton-lite [Github page](https://github.com/NISRA-Tech-Lab/rap-skeleton-lite). The file will be downloaded to the ‘Downloads’ folder on your PC.
 
@@ -35,7 +35,7 @@ In order to work with the RAP Skeleton Lite the project folder must first be dow
 
 ## Contents
 
-The following table lists the RAP Skeleton Lite contents and their purpose:
+The following table lists the RS-lite contents and their purpose:
 
 | File Path                    | Description                                                                                                                  |
 | ---------------------------- | -----------------------------------------------------------------------------------------------------------------------------|
@@ -70,7 +70,7 @@ or
 
 -   Create an HTML report with the RAP Skeleton Lite template.
 
-It is recommended that first-time users of the RAP Skeleton Lite knit the demo report. This will allow the user to view and interact with an HTML report and give them an idea of what their own report could look like and what elements they can consider including.
+It is recommended that first-time users of the RS-lite knit the demo report. This will allow the user to view and interact with an HTML report and give them an idea of what their own report could look like and what elements they can consider including.
 
 ## Knit the demo HTML report.
 
@@ -78,7 +78,7 @@ Knitting the `rap_skeleton_lite_demo.Rmd` file will produce the demo HTML report
 
 -   Using your Windows file explorer, navigate to the `rap-skeleton-lite-main` folder and open it.
 
--   Double-click the `rap-skeleton-lite.Rproj` file to open the RAP Skeleton Lite Lite R project (`rap-skeleton-lite/rap-skeleton-lite.Rproj`).
+-   Double-click the `rap-skeleton-lite.Rproj` file to open the RS-lite R project (`rap-skeleton-lite/rap-skeleton-lite.Rproj`).
 
 -   Once R Studio has opened the R project, open the `rap_skeleton_lite_demo.Rmd` file by selecting it under the `Files` tab in the bottom right quadrant of R Studio (`code/rap_skeleton_lite_demo.Rmd`).
 
