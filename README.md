@@ -24,7 +24,7 @@ To ensure compatability and smooth functioning of the RS-lite, it is important t
 
 In order to work with the RS-lite the project folder must first be downloaded onto your local computer. Follow these steps to complete this process:
 
--   Download the RAP Skeleton Lite as a ZIP file by clicking on the green code button and selecting ‘Download ZIP’ on the rap-skeleton-lite [Github page](https://github.com/NISRA-Tech-Lab/rap-skeleton-lite). The file will be downloaded to the ‘Downloads’ folder on your PC.
+-   Download the RS-lite as a ZIP file by clicking on the ‘Source code (zip)’ link under the ‘Assets’ tab on the latest release page.  The file will be downloaded to the ‘Downloads’ folder on your PC.
 
 -   Open your ‘Downloads’ folder using Windows Explorer and extract the RAP Skeleton Lite contents by right-clicking on the ZIP file and selecting ‘Extract All’.
 
