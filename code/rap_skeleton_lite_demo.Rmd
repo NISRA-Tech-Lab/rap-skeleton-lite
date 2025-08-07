@@ -153,7 +153,7 @@ Call an image in your rmd file (Ensuring your file path uses forward slashes) us
 
 eg:
 
-![](../images/NISRA_logo_bilingual_colour.png)
+![NISRA logo](../images/NISRA_logo_bilingual_colour.png)
 
 Alternatively, for more control over the formatting of your image you can use HTML. This approach is especially useful if you need to customize how images are displayed (e.g. setting width, height and alignment). Learn more about adding images using HTML [here](https://www.w3schools.com/html/html_images.asp#:~:text=The%20HTML%20%3Cimg%3E%20tag%20is%20used)
 
