@@ -118,4 +118,22 @@ You can also use the `rap_skeleton_lite_demo.Rmd` script to create a new report.
 
 First take a copy of the file and rename for the title of your report. You can then use the demo report's content to build your report - adding, editing or removing the examples as needed.
 
+## Image requirements for accessibility
+
+All images in HTML outputs should have descriptive `alt` text to support accessibility.
+
+- If an image is decorative, alt text can be set to an empty string: `alt=""`.
+- <strong><em>Never</em></strong> include phrases like `"Image of"` in alt text. For example, use `alt="Joe Bloggs"` not `alt="Image of Joe Bloggs"`.
+- For other images, provide a short description of what the image shows.
+
+For a decorative .svg image:
+```html
+<img src="..images/decorative.svg" alt="">
+```
+
+For an informative .png image:
+```html
+<img src="..images/nisra-logo.png" alt="NISRA logo">
+```
+
 
