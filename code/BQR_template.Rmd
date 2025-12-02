@@ -1,0 +1,257 @@
+---
+title: "Background Quality Report Template"
+lang: "en"
+output: 
+  html_document:
+    code_folding: show
+    toc: true
+    toc_float: true
+    toc_depth: 4
+    code_download: no
+    css: "style.css"
+    includes:
+    in_header: "meta.html"
+knit: (function(input, ...) {
+    rmarkdown::render(
+      input,
+      output_dir = "../outputs/",
+      envir = globalenv()
+    )
+  })
+params:
+  annotations:
+    true
+---
+
+<div id = "cookie-banner"></div>
+<script src = "cookies_script.js"></script>
+
+```{r settings, include=FALSE}
+# This code sets the default options for all chunks in this file
+knitr::opts_chunk$set(
+  message = FALSE, warning = FALSE, echo = FALSE
+)
+
+if (!require(here)) install.packages("here")
+library(here)
+
+source(here("code/data_prep.R"))
+```
+
+<!-- This is the top banner. Add your publication name -->
+
+<div data-nics-theme="`r nics_theme`">
+
+<header>
+`r f_banner(title = rmarkdown::metadata$title, subtitle = "insert publication name")`
+</header>
+
+<main>
+
+<!-- This is the standard introduction used in every BQR. Add a link to your publication series page where indicated below e.g. [publication name](https://www.nisra.gov.uk/...) -->
+
+This report provides information on the quality of the data used to produce the official statistics: **&lt;insert link to report&gt;**. It informs users about the quality of the information upon which they may be drawing conclusions and making decisions.
+
+The report is structured around the five quality dimensions for statistical outputs (from the [European Statistics Code of Practice, PDF (458 KB)](https://ec.europa.eu/eurostat/documents/4031688/8971242/KS-02-18-142-EN-N.pdf/e7f85f07-91db-4312-8118-f729c75878c7?t=1528447068000)). The UK Statistics Authority’s [Code of Practice for Statistics](https://code.statisticsauthority.gov.uk/) requires that:
+
+> __6.10__ Verify that the statistics are representative and of suitable quality and monitor relevant quality dimensions for both input data and the statistics, such as completeness and validity, accuracy and reliability, coherence and comparability, and timeliness. Quantify statistical error, including bias, and produce measures of confidence, where possible.    
+>
+> __7.2__ Report on the key quality dimensions such as accuracy and timeliness, and, where possible, give estimates of error and confidence for the statistics. Summarise how uncertainty in the estimates may impact use by using qualifying words, numbers or graphics.
+
+<!-- The headers and bold text below must be included in your BQR, the other sections must be replaced with your own text-->
+
+##  Introduction
+
+Things to consider:
+
+- a brief history of the statistical process and output in question
+- summary of the method used to compile output
+- overview of the production and dissemination process
+- documentation available, particularly relating to methodology and quality
+
+##  Relevance
+
+**The degree to which the statistical product meets user needs in both**
+**coverage and content.**
+
+Things to consider:
+
+- a content-oriented description of all statistical outputs
+- definitions of statistical target concepts (population, definition of units
+and aggregation formula) including discrepancies from European Statistical System (ESS) or international concepts
+(can also be discussed under coherence and comparability)
+- information on completeness compared with relevant regulations and guidelines
+- unmet user needs, including reasons for not meeting them
+- available quality indicators
+
+##  Accuracy and reliability
+
+**The proximity between an estimate and the unknown true value.**
+
+Things to consider:
+
+- a presentation of methodology sufficient for i) judging whether it lives up to internationally accepted standards and good practice and (ii) enabling the reader to understand specific error assessments
+- identification of the main sources of error with special focus on the key
+estimates
+- an assessment of the potential for bias (sign and order of magnitude) for each key indicator in quantitative or qualitative terms
+
+Surveys:
+
+- sampling errors
+- coverage errors
+- measurement errors
+- non-response errors
+- processing errors
+
+Statistical processes using administrative sources:
+
+- an evaluation or assessment of under coverage and over coverage including of spatial variables
+- an evaluation or assessment of errors in classification variables
+- for event-reporting systems, an estimate or assessment of the rate of unreported events
+
+## Timeliness and punctuality
+
+**Timeliness refers to the time gap between publication and the reference**
+**period. Punctuality refers to the gap between planned and actual publication**
+**dates.**
+
+Things to consider:
+
+- for annual or more frequent releases: the average production time for each release of data
+- for annual or more frequent releases: the percentage of releases delivered on time, based on scheduled release dates
+- the reasons for non-punctual releases explained
+
+## Accessibility and clarity
+
+**Accessibility is the ease with which users are able to access the data, also**
+**reflecting the format in which the data are available and the availability**
+**of supporting information. Clarity refers to the quality and sufficiency of**
+**the metadata, illustrations and accompanying advice.**
+
+Things to consider:
+
+- a description of the conditions of access to data
+- a summary description of the information (metadata) accompanying the
+statistics
+- the description should refer to both less sophisticated and more advanced
+users and how their needs have been taken into account
+- a summary of user feedback on accessibility and clarity
+
+## Coherence and comparability
+
+**Coherence is the degree to which data that are derived from different**
+**sources or methods, but refer to the same topic, are similar. Comparability**
+**is the degree to which data can be compared over time and domain.**
+
+Things to consider:
+
+- metadata elements that could affect coherence or comparability
+- an assessment (preferably quantitative) of the possible effect of each
+reported difference on the output values
+- differences between the statistical processes and the corresponding European
+regulations and standards and/or international standards (if any)
+- comparability over time
+- comparability over regions or administrations
+- internal coherence
+- coherence with national accounts
+- coherence with other statistics
+- mirror statistics
+
+Geographies might be an important topic to include here. Issues such as boundary
+changes over time might affect comparability, and it may be possible to comment
+on the comparability (or lack of), of similar sources due to the geographical
+building blocks within which data has been collected.
+
+It may be useful here to describe any common pitfalls with the data. For
+example, ‘users often interpret this as the number of GCSE passes,  but care
+should be taken as this table does not include equivalent qualifications’, or
+‘people occasionally misinterpret this figure as the number of people
+unemployed, whereas it is actually the number of people unemployed and claiming
+benefit. For figures on all unemployed, please see here www.insertlink.gov.uk’ 
+
+## Trade-offs between output quality components
+
+**Trade-offs are the extent to which different aspects of quality are balanced**
+**against each other.**
+
+Things to consider:
+
+- a description of each important trade-off that has been analysed and the basis
+on which the trade-off decision has been made
+- a statement concerning any trade-offs that should have been analysed but have
+not been
+
+## Assessment of user needs and perceptions
+
+**The processes for finding out about users and uses, and their views on the**
+**statistical products.**
+
+Things to consider:
+
+- means of obtaining information on users and uses
+- description and classification of users
+- uses for which users want the outputs
+- users and uses given special consideration
+- means of obtaining user views
+- main results regarding user satisfaction
+- date of most recent user satisfaction survey
+
+## Performance, cost and respondent burden
+
+**The effectiveness, efficiency and economy of the statistical output.**
+
+Things to consider:
+
+There are many recommended measures including:
+
+- annual operational cost
+- annual respondent burden in financial terms and/or hours
+
+The operational cost can be expressed in staff time or perhaps more helpfully
+(for external users) by giving a relative indication of its resource allocation
+compared to other Departmental outputs, or proportion of overall resources
+used.
+
+## Confidentiality, transparency and security
+
+**The procedures and policy used to ensure sound confidentiality, security and**
+**transparent practices.**
+
+Things to consider:
+
+- description required for procedures on confidentiality, transparency and
+security
+  
+    
+    
+</main>
+
+```{r render-footer, results='asis', echo=FALSE}
+f_footer()
+```
+
+`r if (params$annotations) '<script src = "annotation.js"></script>'`
+
+</div>
+
+```{js}
+
+// Function to add tabs to table of contents
+
+function tabOrder() {
+  
+  // Make side menu tabbable
+
+  let headings = document.getElementsByClassName('tocify-item list-group-item');
+  let sections = document.getElementsByClassName('section');
+  
+  for (let i = 0; i < headings.length; i ++) {
+    headings[i].innerHTML = "<a href='#" + sections[i].id + "'>" + headings[i].innerHTML +  "</a>";
+  }
+
+  
+};
+
+// Instruct web browser to run above function when loaded
+window.onload = tabOrder;
+```

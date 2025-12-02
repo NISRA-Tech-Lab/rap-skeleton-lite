@@ -1,6 +1,6 @@
 library(here)
 
-source(paste0(here(), "/code/config.R"))
+source(here("code/config.R"))
 
 df_myes <- read.csv(paste0(
   here(),
