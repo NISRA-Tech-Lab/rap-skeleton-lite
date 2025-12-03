@@ -16,7 +16,7 @@ The RAP Skeleton Lite underwent review and any unused or out of date parts of th
 All packages have been updated so the RAP Skeleton Lite is fully compatible with R version 4.4.3.
 
 #### 🖼️ New BQR Template
-A new BQR_template.Rmd has been added to the RAP Skeleton Lite, this is structured following the exisiting Word template shared by NISRA Statistical Support Branch (SSB). Instructions on how to use the BQR_template.Rmd are included within the .Rmd file.
+A new BQR_template.Rmd has been added to the RAP Skeleton Lite, this is structured following the existing Word template shared by NISRA Statistical Support Branch (SSB). Instructions on how to use the BQR_template.Rmd are included within the .Rmd file.
 
 #### 🧩 ADR styling
 ADR colours and logos have been added as styling options. Set nics-theme as "adr" in config.R to configure.
