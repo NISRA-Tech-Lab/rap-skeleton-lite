@@ -93,11 +93,7 @@ dep_alt <- paste(
   "homepage"
   )
 
-## Get latest commit for last updated time for the report
+## Get date last updated time for the report
 
-last_updated <- system("git log -1 --format=%cd --date=short",
-                       intern = TRUE)
-last_updated_formatted <-
-  format(
-    as.Date(last_updated),
-    "%d-%m-%Y")
+last_updated <- Sys.Date()
+last_updated_formatted <- format(last_updated, "%d %B %Y")
