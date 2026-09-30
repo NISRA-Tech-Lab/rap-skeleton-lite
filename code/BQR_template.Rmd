@@ -10,7 +10,11 @@ output:
     code_download: no
     css: "style.css"
     includes:
-    in_header: "meta.html"
+      in_header:
+        - "meta.html"
+        - "consent_head.html"
+      after_body:
+        - "cookie_banner.html"
 knit: (function(input, ...) {
     rmarkdown::render(
       input,
@@ -23,8 +27,7 @@ params:
     true
 ---
 
-<div id = "cookie-banner"></div>
-<script src = "cookies_script.js"></script>
+<div id="cookie-banner"></div>
 
 ```{r settings, include=FALSE}
 # This code sets the default options for all chunks in this file
@@ -48,66 +51,81 @@ source(here("code/data_prep.R"))
 
 <main>
 
-<!-- This is the standard introduction used in every BQR. Add your publication name and a link to your publication series page where indicated below -->
+<!-- This is the standard introduction used in every BQR. Add your publication
+name and a link to your publication series page where indicated below -->
 
-This report provides information on the quality of the data used to produce the official statistics: [insert publication name](insert link to publication series page). It informs users about the quality of the information upon which they may be drawing conclusions and making decisions.
+This report provides information on the quality of the data used to produce the
+official statistics: [insert publication name](insert link to publication series page).
+It informs users about the quality of the information upon which they may be
+drawing conclusions and making decisions.
 
-The report is structured around the five quality dimensions for statistical outputs (from the [European Statistics Code of Practice, PDF (458 KB)](https://ec.europa.eu/eurostat/documents/4031688/8971242/KS-02-18-142-EN-N.pdf/e7f85f07-91db-4312-8118-f729c75878c7?t=1528447068000)). The UK Statistics Authority’s [Code of Practice for Statistics](https://code.statisticsauthority.gov.uk/) requires that producers of official statistics:
+The report looks at five ways to measure statistical quality. These are based on
+the [European Statistics Code of Practice, PDF (458 KB)](https://ec.europa.eu/eurostat/documents/4031688/8971242/KS-02-18-142-EN-N.pdf/e7f85f07-91db-4312-8118-f729c75878c7?t=1528447068000).
+The [Code of Practice for Statistics](https://code.statisticsauthority.gov.uk/)
+says that organisations that produce official statistics must:
 
-> __6.10__ Verify that the statistics are representative and of suitable quality and monitor relevant quality dimensions for both input data and the statistics, such as completeness and validity, accuracy and reliability, coherence and comparability, and timeliness. Quantify statistical error, including bias, and produce measures of confidence, where possible.    
+> __6.10__ Verify that the statistics are representative and of suitable quality
+and monitor relevant quality dimensions for both input data and the statistics,
+such as completeness and validity, accuracy and reliability, coherence and
+comparability, and timeliness. Quantify statistical error, including bias,
+and produce measures of confidence, where possible.    
 >
-> __7.2__ Report on the key quality dimensions such as accuracy and timeliness, and, where possible, give estimates of error and confidence for the statistics. Summarise how uncertainty in the estimates may impact use by using qualifying words, numbers or graphics.
+> __7.2__ Report on the key quality dimensions such as accuracy and timeliness,
+and, where possible, give estimates of error and confidence for the statistics.
+Summarise how uncertainty in the estimates may impact use by using qualifying
+words, numbers or graphics.
 
-<!-- The headers and bold text below must be included in your BQR, the other sections must be replaced with your own text-->
+<!-- The headers and bold text below must be included in your BQR, the other
+sections must be replaced with your own text-->
 
 ##  Introduction
 
 Things to consider:
 
-- a brief history of the statistical process and output in question
-- summary of the method used to compile output
+- a brief history of the statistical process and output
+- the method used to create the publication
 - overview of the production and dissemination process
 - documentation available, particularly relating to methodology and quality
 
 ##  Relevance
 
-**The degree to which the statistical product meets user needs in both**
-**coverage and content.**
+**Does the information meet people's needs?**
+**This means checking whether statistics cover the right people, places and**
+**topics.**
 
 Things to consider:
 
-- a content-oriented description of all statistical outputs
-- definitions of statistical target concepts (population, definition of units
-and aggregation formula) including discrepancies from European Statistical System (ESS) or international concepts
-(can also be discussed under coherence and comparability)
-- information on completeness compared with relevant regulations and guidelines
-- unmet user needs, including reasons for not meeting them
-- available quality indicators
+- what statistics are included
+- who or what the statistics are about
+- clear explanations of any terms or definitions used
+- whether the statistics meet relevant standards or guidelines
+- any information users have asked for but is not available, and why
+- any measures that show the quality of the statistics
 
-##  Accuracy and reliability
+##  Accuracy
 
-**The proximity between an estimate and the unknown true value.**
+**Accuracy means how close an estimate is to the real value.**
 
 Things to consider:
 
-- a presentation of methodology sufficient for i) judging whether it lives up to internationally accepted standards and good practice and (ii) enabling the reader to understand specific error assessments
-- identification of the main sources of error with special focus on the key
-estimates
-- an assessment of the potential for bias (sign and order of magnitude) for each key indicator in quantitative or qualitative terms
+- how the statistics were produced
+- whether the methods follow recognised standards
+- the main sources of error
+- any bias that could affect the results
 
-Surveys:
+For surveys, include:
 
-- sampling errors
-- coverage errors
-- measurement errors
-- non-response errors
-- processing errors
+- sampling errors (using a sample instead of everyone)
+- coverage errors (missing people or including the wrong people)
+- measurement errors (incorrect answers or measurements)
+- non-response errors (people not taking part)
+- processing errors (mistakes when handling data)
 
-Statistical processes using administrative sources:
+For statistics based on administrative data, include:
 
-- an evaluation or assessment of under coverage and over coverage including of spatial variables
-- an evaluation or assessment of errors in classification variables
-- for event-reporting systems, an estimate or assessment of the rate of unreported events
+- under-coverage and over-coverage
+- errors in classification variables
+- unreported events, where relevant
 
 ## Timeliness and punctuality
 
@@ -117,113 +135,108 @@ Statistical processes using administrative sources:
 
 Things to consider:
 
-- for annual or more frequent releases: the average production time for each release of data
-- for annual or more frequent releases: the percentage of releases delivered on time, based on scheduled release dates
-- the reasons for non-punctual releases explained
+- how long it takes to produce each release
+- how often releases are published on time
+- reasons why any releases were late
 
 ## Accessibility and clarity
 
-**Accessibility is the ease with which users are able to access the data, also**
-**reflecting the format in which the data are available and the availability**
-**of supporting information. Clarity refers to the quality and sufficiency of**
-**the metadata, illustrations and accompanying advice.**
+**Accessibility means how easy it is to get and use the data.**
+**Clarity means how easy the information is to understand.**
 
 Things to consider:
 
-- a description of the conditions of access to data
-- a summary description of the information (metadata) accompanying the
-statistics
-- the description should refer to both less sophisticated and more advanced
-users and how their needs have been taken into account
-- a summary of user feedback on accessibility and clarity
+- explain how people can access the data 
+- include information that helps people understand the statistics
+- show how the needs of different users have been met
+- include feedback on how easy the statistics are to find and understand
 
 ## Coherence and comparability
 
-**Coherence is the degree to which data that are derived from different**
-**sources or methods, but refer to the same topic, are similar. Comparability**
-**is the degree to which data can be compared over time and domain.**
+**Coherence means checking whether information from different sources gives a**
+**similar picture.**
+**Comparability means checking whether information can be compared across**
+**different time periods, places or groups.**
 
 Things to consider:
 
-- metadata elements that could affect coherence or comparability
-- an assessment (preferably quantitative) of the possible effect of each
-reported difference on the output values
-- differences between the statistical processes and the corresponding European
-regulations and standards and/or international standards (if any)
-- comparability over time
-- comparability over regions or administrations
-- internal coherence
-- coherence with national accounts
-- coherence with other statistics
-- mirror statistics
+- anything that could make the statistics harder to compare
+- how much any differences affect the results
+- any differences from UK, European or international standards
+- whether the statistics can be compared over time
+- whether the statistics can be compared across different places
+- whether the statistics tell the same story within the dataset
+- whether they agree with other related statistics
 
-Geographies might be an important topic to include here. Issues such as boundary
-changes over time might affect comparability, and it may be possible to comment
-on the comparability (or lack of), of similar sources due to the geographical
-building blocks within which data has been collected.
+Geographies might be an important topic to include here:
 
-It may be useful here to describe any common pitfalls with the data. For
-example, ‘users often interpret this as the number of GCSE passes,  but care
-should be taken as this table does not include equivalent qualifications’, or
-‘people occasionally misinterpret this figure as the number of people
-unemployed, whereas it is actually the number of people unemployed and claiming
-benefit. For figures on all unemployed, please see here www.insertlink.gov.uk’ 
+- Explain if changes to boundaries or areas affect comparisons over time. 
+- Explain if data collected in different areas can be compared fairly
 
-## Trade-offs between output quality components
+Things users should know:
 
-**Trade-offs are the extent to which different aspects of quality are balanced**
-**against each other.**
+- explain any common mistakes people make when using the statistics
+- explain how the statistics should be used and understood 
+- signpost users to other statistics if they may be more suitable
 
-Things to consider:
+## Balancing different needs
 
-- a description of each important trade-off that has been analysed and the basis
-on which the trade-off decision has been made
-- a statement concerning any trade-offs that should have been analysed but have
-not been
+**People who produce statistics often have to make choices about where to get**
+**their data from and how to collect it.**
 
-## Assessment of user needs and perceptions
+For example, they may need to choose between using existing administrative data
+or carrying out a new survey. A survey can ask exactly the right questions, but
+it can take a lot of time and money. Administrative data may be cheaper and
+available more quickly, but it might not include everything that is needed.
 
-**The processes for finding out about users and uses, and their views on the**
-**statistical products.**
+Things to include and consider:
 
-Things to consider:
+- what data sources were chosen
+- why these sources were chosen
+- other options that were considered
+- the advantages and disadvantages of each option
+- how these choices affected the statistics
+- any choices that may need to be reviewed in the future
 
-- means of obtaining information on users and uses
-- description and classification of users
-- uses for which users want the outputs
-- users and uses given special consideration
-- means of obtaining user views
-- main results regarding user satisfaction
-- date of most recent user satisfaction survey
+## What do users need?
+
+**This section looks at who uses the statistics, what they use them for, and**
+**what they think about them.**
+
+Things to include:
+
+- how you find out who uses the statistics 
+- the different groups of people who use them
+- what people use the statistics for
+- any users or uses that need special attention
+- how you collect feedback from users
+- what users say about the statistics
+- when you last asked users for their feedback
 
 ## Performance, cost and respondent burden
 
-**The effectiveness, efficiency and economy of the statistical output.**
+**This looks at how well the statistics work, what they cost to produce, and**
+**how much time they take from people who provide information.**
 
-Things to consider:
+Things to include:
 
-There are many recommended measures including:
-
-- annual operational cost
-- annual respondent burden in financial terms and/or hours
-
-The operational cost can be expressed in staff time or perhaps more helpfully
-(for external users) by giving a relative indication of its resource allocation
-compared to other Departmental outputs, or proportion of overall resources
-used.
+- the cost of producing the statistics each year
+- how much time people spend providing information
+- how staff time and resources are used
+- how the cost compares with other statistical outputs, where useful
 
 ## Confidentiality, transparency and security
 
-**The procedures and policy used to ensure sound confidentiality, security and**
-**transparent practices.**
+**This section explains how information is protected and how organisations are**
+**open about how they produce statistics.**
 
-Things to consider:
+Things to include:
 
-- description required for procedures on confidentiality, transparency and
-security
+- how information is kept private
+- how information is kept safe
+- how statistics are produced in an open and clear way
+- the rules used to protect information
   
-    
-    
 </main>
 
 ```{r render-footer, results='asis', echo=FALSE}
@@ -239,18 +252,26 @@ f_footer()
 // Function to add tabs to table of contents
 
 function tabOrder() {
-  
+
   // Make side menu tabbable
 
-  let headings = document.getElementsByClassName('tocify-item list-group-item');
-  let sections = document.getElementsByClassName('section');
-  
-  for (let i = 0; i < headings.length; i ++) {
-    headings[i].innerHTML = "<a href='#" + sections[i].id + "'>" + headings[i].innerHTML +  "</a>";
-  }
+  let headings = document.getElementsByClassName(
+    "tocify-item list-group-item"
+  );
 
-  
-};
+  let sections = document.getElementsByClassName(
+    "section"
+  );
+
+  for (let i = 0; i < headings.length; i++) {
+    headings[i].innerHTML =
+      "<a href='#" +
+      sections[i].id +
+      "'>" +
+      headings[i].innerHTML +
+      "</a>";
+  }
+}
 
 // Instruct web browser to run above function when loaded
 window.onload = tabOrder;

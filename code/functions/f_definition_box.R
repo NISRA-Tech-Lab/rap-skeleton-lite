@@ -1,6 +1,6 @@
 f_definition_box <- function(text = "") {
-  div(
-    div(
+  htmltools::div(
+    htmltools::div(
       class = "defboxes",
       text
     )

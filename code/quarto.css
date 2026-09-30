@@ -1,0 +1,315 @@
+/* Quarto styles */
+
+/* font size ---------------------- */
+.reveal .slides section {
+  font-size: 28px !important;
+}
+
+.reveal .slides section p,
+.reveal .slides section li,
+.reveal .slides section td,
+.reveal .slides section th {
+  font-size: 28px !important;
+}
+/* font size --------------------- */
+
+.title-slide {
+  background: #00205b;
+  color: white;
+  text-align: center;
+}
+
+.title-slide img {
+  margin:0 5rem;
+  vertical-align: middle;
+}
+
+.title-slide h2 {
+	display: none;
+}
+
+/*.title-slide .custom-navbar {
+  display: none !important;
+}*/
+
+.slide-title {
+  font-size: 32px;
+}
+
+
+.banner.fixed-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 500;
+  background-color: #00205b; /* Or your preferred background color */
+  padding-top: 5px; /* Adjust as needed for vertical spacing */
+  padding-bottom: 5px; /* Adjust as needed for vertical spacing */
+}
+
+.banner.fixed-top .row {
+  align-items: center;
+  height: auto; /* Adjust if you need a minimum height */
+}
+
+.banner.fixed-top .col-md-4,
+.banner.fixed-top .col-md-8 {
+  display: flex;
+  align-items: center;
+  height: auto; 
+  justify-content: space-between;
+}
+
+.banner.fixed-top .col-md-8 .d-flex.flex-row {
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.banner.fixed-top .col-md-4 {
+  justify-content: space-between;
+  padding-left: 15px; 
+  padding-right: 15px; 
+}
+
+.banner.fixed-top .col-md-8 {
+  justify-content: flex-end;
+}
+
+.banner.fixed-top img {
+  height: auto; 
+  width: auto;
+}
+
+.banner.fixed-top .col-md-4 a:first-child img {
+  margin-right: 10px;
+}
+
+.banner.fixed-top .col-md-8 .d-flex.flex-row a:first-child img {
+  margin-left: 0; 
+  margin-right: 20px; 
+}
+
+.slide-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 5px 20px;
+  color: #ffffff;
+  font-size: 0.7em;
+  text-align: left;
+  z-index: 9999;
+  width: 100%; 
+  box-sizing: border-box;
+  line-height: 1.5;
+}
+
+.slide-footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50vw;
+  width: 200vw;
+  height: 100%;
+  background-color: #00205b;
+  z-index: -1;
+}
+
+.slide-footer a {
+  color: #ffffff;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.slide-footer a:hover {
+  text-decoration: underline;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 5px;
+}
+
+.footer-column-left {
+  width: 70%;
+}
+
+.footer-column-right {
+  width: 30%;
+}
+
+.footer-bottom {
+  border-top: 1px solid #ffffff33;
+  padding-top: 5px;
+}
+ 
+.reveal .slides h2 {
+  text-align: center;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.image-grid div:nth-child(1) {
+  justify-self: start;
+}
+.image-grid div:nth-child(2) {
+  justify-self: center;
+}
+.image-grid div:nth-child(3) {
+  justify-self: end;
+}
+
+.slide-one-title {
+  position: cent;
+  bottom: 15rem; 
+  width: 100%;
+  text-align: center;
+  font-size: 1.8rem;
+  color: #00205b;
+}
+
+.slide-one-footer {
+  position: absolute;
+  bottom: 3rem;
+  width: 100%;
+  text-align: center;
+  font-size: 0.9rem;
+  color: white;
+}
+
+kbd {
+  display: inline-block;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow:
+    inset 0 -2px 0 #bbb,
+    0 1px 2px rgba(0, 0, 0, 0.1);
+  padding: 4px 8px;
+  font-size: 0.9em;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  color: #333;
+  line-height: 1;
+  white-space: nowrap;
+  user-select: none;
+  vertical-align: middle;
+  text-align: center;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.slide-menu-wrapper {
+  z-index: 9999 !important;
+  position: fixed !important;
+}
+
+.slide-menu-wrapper {
+  background-color: #3878c5 !important;
+  color: #ffffff !important;
+}
+
+
+.slide-menu-wrapper .slide-menu-panel {
+  background-color: #3878c5 !important;
+  color: #ffffff !important;
+}
+
+
+.slide-menu-wrapper .slide-menu-toolbar {
+  background-color: #3878c5 !important;
+  color: #ffffff !important;
+  border-bottom: 1px solid #ffffff33;
+}
+
+
+.slide-menu-wrapper .slide-menu-panel,
+.slide-menu-wrapper .slide-menu-panel * {
+  color: #ffffff !important;
+  fill: #ffffff !important; /* for SVGs/icons */
+}
+
+
+.slide-menu-wrapper .slide-menu-panel a {
+  color: #ffffff !important;
+  text-decoration: none;
+}
+
+.slide-menu-wrapper .slide-menu-panel a:hover {
+  color: #00205b !important; /* dark blue hover */
+  text-decoration: underline;
+}
+
+
+.slide-menu-toolbar button,
+.slide-menu-toolbar .toolbar-label {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+/* Wrapper: scrollable, scrollbar hidden, with a small right gutter */
+.scale-table{
+  width:100%;
+  overflow-x:auto;
+  -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
+  padding-right: 12px;                 /* keeps last column fully visible */
+  scrollbar-gutter: stable both-edges; /* reserves space across browsers */
+  scrollbar-width: none;               /* Firefox */
+  -ms-overflow-style: none;            /* old Edge/IE */
+}
+.scale-table::-webkit-scrollbar{ display:none; } /* Chrome/Safari */
+
+/* Table: intrinsic width but at least the container; no extra margins */
+.scale-table table{
+  width:auto !important;
+  min-width:100% !important;
+  margin-right:0;                      /* cancel centering from some themes */
+  border-collapse:collapse;
+  box-sizing:border-box;
+}
+
+/* Keep words intact (wrap only at spaces) */
+.scale-table th,
+.scale-table td{
+  white-space:normal;
+  word-break:normal;
+  overflow-wrap:normal;
+  hyphens:none;
+}
+
+/* Bootstrap 5 compact table selector */
+.scale-table .table-sm > :not(caption) > * > *{
+  padding: 0.25rem 0.35rem;  /* vertical, horizontal */
+}
+
+/* Scale chart container responsively */
+/* Scale chart container responsively */
+.scale-chart {
+  width: 100%;
+  max-width: 100%;
+  min-height: 400px;
+  overflow: visible;
+  position: relative;
+}
+
+.scale-chart .plotly,
+.scale-chart .js-plotly-plot {
+  width: 100% !important;
+  height: 500px !important;
+  min-height: 400px !important;
+}
+
+.scale-chart iframe {
+  width: 100% !important;
+  height: auto !important;
+}
