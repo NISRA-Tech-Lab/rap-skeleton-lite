@@ -1,7 +1,7 @@
 ---
 title: "RAP Skeleton Lite Demo"
 lang: "en"
-output: 
+output:
   html_document:
     code_folding: show
     toc: true
@@ -10,7 +10,11 @@ output:
     code_download: no
     css: "style.css"
     includes:
-      in_header: "meta.html"
+      in_header:
+        - "meta.html"
+        - "consent_head.html"
+      after_body:
+        - "cookie_banner.html"
 knit: (function(input, ...) {
     rmarkdown::render(
       input,
@@ -19,28 +23,34 @@ knit: (function(input, ...) {
     )
   })
 params:
-  annotations:
-    true
+  annotations: true
 ---
 
-<div id = "cookie-banner"></div>
-<script src = "cookies_script.js"></script>
+<div id="cookie-banner"></div>
 
 ```{r settings, include=FALSE}
 # This code sets the default options for all chunks in this file
 knitr::opts_chunk$set(
-  message = FALSE, warning = FALSE, echo = FALSE
+  message = FALSE,
+  warning = FALSE,
+  echo = FALSE
 )
 
 if (!require(here)) install.packages("here")
 library(here)
 
-source(here("code/data_prep.R"))
+source(
+  here(
+    "code",
+    "data_prep.R"
+  )
+)
 ```
 
 <div data-nics-theme="`r nics_theme`">
 
-<!-- these <header> and <main> tags are important for accessibility, they define landmark areas for screenreaders. -->
+<!-- these <header> and <main> tags are important for accessibility, they
+define landmark areas for screenreaders. -->
 <header>
 `r f_banner(title = rmarkdown::metadata$title)`
 </header>
@@ -49,19 +59,18 @@ source(here("code/data_prep.R"))
 
 ## Introduction
 
-This report acts as a demo which outlines the features available in the RAP
-Skeleton Lite. This can be used for the creation of simple HTML documents such
-as background quality reports or quickly converting documents originally
-produced in Microsoft Word.
+This report shows the features available in the RAP Skeleton Lite. The RAP
+Skeleton Lite is used to create simple HTML reports. It can also convert
+Microsoft Word documents into HTML reports.
 
 `r f_borderline()`
 
 ## CSS file for NISRA branding
 
-The `style.css` file, which is found in the project’s code folder is used to
-specify the visual presentation and styling of this output. It has been written
-to comply with NISRA and departmental branding material guidance and it has also
-been written with accessibility guidance in mind.
+The `style.css` file is in the project's code folder.
+It controls how this report looks, including colours, fonts and page layout.
+The file follows NISRA and departmental branding guidance. It also follows
+accessibility guidance to help make the report easy to use.
 
 Changes to the visual presentation of the document can be made by editing the
 `style.css` file. More information on how to write CSS code can be found
@@ -120,12 +129,14 @@ or block quote you can use the function:
 
 ```
 f_definition_box(
-  "The function for a definition box is defined in the Functions.R file and can be called using this function"
+  "The function for a definition box is defined in the Functions.R file and can
+  be called using this function"
 )
 ```
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%"}
 f_definition_box(
-  "The function for a definition box is defined in the Functions.R file and can be called using this function"
+  "The function for a definition box is defined in the Functions.R file and can
+  be called using this function"
 )
 ```
 
@@ -133,9 +144,9 @@ f_definition_box(
 
 ## Custom boxes
 
-You can enhance the visual presentation of your reports by embedding custom HTML
-and CSS directly into your document. One way to achieve this is by using div
-boxes to highlight specific data or information, as shown in the example below.
+You can enhance the presentation of your reports by writing HTML and CSS in your
+document. One way to do this is by using div boxes to highlight specific data or
+information, as shown in the example below.
 
 ```
 <div class="container">
@@ -175,7 +186,7 @@ layout, colours, spacing, and overall appearance of the boxes.
 ## Images
 
 The NISRA logo as well as logos for all departments are found in the project
-folder: `(.../rap-skeleton-lite/images/)`.  You should save any images you use in
+folder: `(.../rap-skeleton-lite/images/)`. You should save any images you use in
 this folder.
 
 Call an image in your rmd file (ensuring your file path uses forward slashes)
@@ -195,16 +206,16 @@ knitr::include_graphics("../images/NISRA_logo_bilingual_colour.png")
 ```
 
 ```{r image,fig.alt="NISRA logo"}
-
 knitr::include_graphics("../images/NISRA_logo_bilingual_colour.png")
-
 ```
 
-Alt text is required for images. If the image is purely for decoration, use fig.alt="" so that a screenreader will ignore it. Otherwise, include a short description of the image using fig.alt = "description". 
+Alt text is required for images. If the image is for decoration, use fig.alt=""
+so that a screenreader will ignore it. Otherwise, include a short description of
+the image using fig.alt = "description". 
 
-Alternatively, for more control over the formatting of your image you can use
-HTML. This approach is especially useful if you need to customize how images are
-displayed (e.g. setting width, height and alignment). Learn more about adding
+Alternatively, for more control over the display of your image you can use
+HTML. This approach is useful if you need to change how images are
+shown (e.g. setting width, height and alignment). Learn more about adding
 images using HTML
 [on the W3 schools website.](https://www.w3schools.com/html/html_images.asp#:~:text=The%20HTML%20%3Cimg%3E%20tag%20is%20used)
 
@@ -212,41 +223,54 @@ images using HTML
 
 ## Tables
 
-This section has a number of basic tables. The Good Practice Team recommend that
-only small demonstration tables should be included in the publication itself.
-Demonstration tables are small tables which highlight one or two messages
-clearly and are supported by commentary.
+This section includes a number of basic tables. It is recommended that only
+small demonstration tables should be included in the document.
 
-When it comes to accessibility, a good rule of thumb is to use a simple
-structure. Use a simple table matrix with a single row of column headers
-describing what is in each column. Other considerations are as follows:
+Demonstration tables are small tables which highlight important messages clearly
+and include commentary.
 
--   don’t merge cells
--   don’t have blank rows or columns
+To make tables easy for everyone to use, give each column a clear heading in one
+header row. Also remember these tips:
+
+-   do not merge cells
+-   do not have blank rows or columns
 -   every column should have a heading
 -   make sure all headings and labels are visible
 -   use consistent rounding
 -   left align text, or row labels, right align numbers
 -   use thousand comma separator
--   avoid abbreviations or make sure they are explained fully
--   use caption for table titles
+-   avoid abbreviations or make sure they are explained clearly
+-   use a caption for table titles
 -   put any data labels in the headings such as % or millions or STG
--   don’t use symbols such as \* or superscripts to create notes or explanations, use [note x]
+-   do not use symbols such as \* or superscripts to create notes or
+explanations, use [note x]
 
 ### Table 1
 
-The following code outputs a table using the Kable package. More help with kable
-can be found in the
+The following code displays a table using the Kable package. More help with
+kable can be found in the
 [Rmarkdown cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/kable.html).
 
 ```{r, echo=TRUE, class.source = 'fold-hide', message=FALSE, out.width="100%"}
 data.frame(
   Option_A = c(
-    "Single (never married or never legally registered a civil partnership) ",
+    paste0(
+      "Single (never married or never legally registered ",
+      "a civil partnership) "
+    ),
     "Married or in a legally registered civil partnership",
-    "Separated (but still legally married or still legally in a civil partnership)",
-    "Divorced or formerly in a civil partnership which is now legally dissolved",
-    "Widowed or surviving member of a legally registered civil partnership",
+    paste0(
+      "Separated (but still legally married or still legally ",
+      "in a civil partnership)"
+    ),
+    paste0(
+      "Divorced or formerly in a civil partnership which is ",
+      "now legally dissolved"
+    ),
+    paste0(
+      "Widowed or surviving member of a legally registered ",
+      "civil partnership"
+    ),
     "No code required (for under 16s)"
   ),
   Option_B = c(
@@ -257,20 +281,30 @@ data.frame(
     "5",
     "6"
   )
-) %>%
-  select("Option A" = Option_A, "Option B" = Option_B) %>%
-  kbl(escape = FALSE, align = "lr") %>%
-  kable_styling(full_width = TRUE)
+) |>
+  select(
+    "Option A" = Option_A,
+    "Option B" = Option_B
+  ) |>
+  kbl(
+    escape = FALSE,
+    align = "lr"
+  ) |>
+  kable_styling(
+    full_width = TRUE
+  )
 ```
 
 ### Table 2 (pagination)
 
-For longer tables, you may want to use pagination. The following table is
-created using the DT package.
+Pagination means breaking information into different pages and letting people
+move between them. For longer tables, you may want to use pagination. The
+following table is created using the DT package.
 [More help with the DT package can be found here](https://rstudio.github.io/DT/).
 
 ```{r, echo=TRUE, class.source = 'fold-hide', warning=FALSE, message=FALSE, out.width="100%"}
-datatable(df_mye_year_gender_t,
+datatable(
+  df_mye_year_gender_t,
   # DT creates row numbers by default. Suppress to ensure all cols have a header
   rownames = FALSE,
   # Rename column headers to make them descriptive
@@ -280,13 +314,30 @@ datatable(df_mye_year_gender_t,
     "Males",
     "NI Population Total"
   ),
-  caption = paste0("Number of males and females making up the total NI
-                   population from ", earliest_year, -latest_year),
-  # left align first column and add thousand separator to numbers
-  options = list(columnDefs = list(list(className = "dt-left", targets = 0)))
-) %>%
-  formatRound(c("Females", "Males", "All persons"),
-    digits = 0, interval = 3,
+  caption = paste0(
+    "Number of males and females making up the total NI population from ",
+    earliest_year,
+    "-",
+    latest_year
+  ),
+  # Left align first column and add thousand separators to numbers.
+  options = list(
+    columnDefs = list(
+      list(
+        className = "dt-left",
+        targets = 0
+      )
+    )
+  )
+) |>
+  formatRound(
+    c(
+      "Females",
+      "Males",
+      "All persons"
+    ),
+    digits = 0,
+    interval = 3,
     mark = ","
   )
 ```
@@ -310,21 +361,27 @@ example_stat <- mean(c(10, 14, 26, 87))
 example_stat <- mean(c(10, 14, 26, 87))
 ```
 
-Printing the example variable: `r example_stat`
+The number below is the “example_stat” variable.
 
-Where "example_stat" can be a variable you have already defined earlier in your
-code.
+This is a variable which is defined in your code.
+
+Here is the example variable printed: 34.25
+
 
 `r f_borderline()`
 
 ## Hyperlinks
 
-Use descriptive link text rather than displaying a url, i.e. [NISRA](www.nisra.gov.uk) rather than https://www.nisra.gov.uk/.  When writing link text:
+Use words for links that tell people where the link goes. For example,
+[NISRA](www.nisra.gov.uk) rather than https://www.nisra.gov.uk/.  
 
-* make sure to use wording that describes the destination of a link, don't use 'here' or 'read more' as link text 
-* if a link is a download, make sure to include the file type and size in the link text
-* links should open in the same window by default 
-* if a link opens in a new window, include "(opens in a new window)" in the link text
+When writing link text:
+
+* use words that tells people where the link goes
+* do not use link text like "click here" or "read more"
+* if a link downloads a file, say what type of file it is and how big it is 
+* links should open in the same window
+* add “(opens in a new window)” to links that open a new window
 
 Add a hyperlink using:
 
@@ -344,17 +401,19 @@ Example:
 
 ### Header tags (h3)
 
-A key element is using header tags to structure your document. Screen readers
-use these to scan and navigate documents so it's important that headings are
-tagged correctly. The colour used in these headings is #1460aa rather than NISRA
-blue to meet accessibility standards.
+Use headings to organise your document. People who use screen readers use
+headings to move around a document. Use the correct heading style for each
+heading. The heading colour is #1460aa because it is easier to see and meets
+accessibility standards.
 
--   the title of the document is tagged as h1, don't use elsewhere
--   don't use heading styles to format text that isn't a heading (for example to
-emphasise a point)
--   don't use bold, colour or text size to create visual headings without
-tagging at the appropriate level
--   don't skip any heading levels, follow order h1, h2, h3, h4
+When using headings:
+
+*	use Heading 1 only for the document title
+*	do not use Heading 1 anywhere else
+*	do not use headings just to make text stand out
+*	do not use bold text, colours, or bigger text instead of headings
+*	use headings in order: Heading 1, Heading 2, Heading 3, then Heading 4
+*	do not miss out a heading level
 
 More detailed guidance on writing for web is available in the Drupal user manual
 published by Dissemination Branch. You can find the
@@ -362,8 +421,8 @@ published by Dissemination Branch. You can find the
 and [other accessibility guidance](https://nicsonline.sharepoint.com/sites/TM-DOF-NISRATEAM/SitePages/DISSEMINATION%20Accessibility.aspx?ct=1727952463891&or=Teams-HL&ga=1&LOF=1)
 on NISRA Teams Channel.
 
-The table of contents is initialised and the parameters are set using the
-following code:
+The code below shows code written in yml. This code sets up the table of
+contents (toc).
 
 ```         
 html_document:
@@ -371,11 +430,14 @@ html_document:
   toc_float: true
   toc_depth: 4
 ```
+Please see below for the different settings which can be changed to alter the
+structure of your HTML document:
 
-* toc – can be true or false, determines whether table of contents is shown
-* toc_float – can be true or false, determines whether table of contents appears
-at top of page or at the side
-* toc_depth – enter a number, determines the level of nesting headings which
+* toc – can be true or false, this determines whether the table of contents is
+visible
+* toc_float – can be true or false, this determines whether the table of
+contents appears at the top of page or at the side
+* toc_depth – enter a number, determines the level of nested headings which
 appear in the table of contents
 
 Headings and sub headings are then defined and registered in the table of
@@ -440,8 +502,8 @@ output:
 
 ## Useful resources and links 
 
-To help users get started, the following resources provide quick reference guides
-and detailed instructions on how to use R Markdown efficiently.
+To help users get started, the following resources provide quick reference
+guides and detailed instructions on how to use R Markdown efficiently.
 
 - [R Markdown CHEATSHEET](https://rstudio.github.io/cheatsheets/rmarkdown.pdf#:~:text=Dynamic%20Documents%20%C2%B7%20Knit%20together%20plots,#:~:text=Dynamic%20Documents%20%C2%B7%20Knit%20together%20plots,)
 
@@ -454,17 +516,11 @@ and detailed instructions on how to use R Markdown efficiently.
 The NISRA footer is defined in `functions.R` and is called in the Rmd near the
 bottom.
 
-
-  
 </main>
-
-
 
 ```{r render-footer, results='asis', echo=FALSE}
 f_footer()
 ```
-
-
 
 `r if (params$annotations) '<script src = "annotation.js"></script>'`
 
@@ -475,18 +531,26 @@ f_footer()
 // Function to add tabs to table of contents
 
 function tabOrder() {
-  
+
   // Make side menu tabbable
 
-  let headings = document.getElementsByClassName('tocify-item list-group-item');
-  let sections = document.getElementsByClassName('section');
-  
-  for (let i = 0; i < headings.length; i ++) {
-    headings[i].innerHTML = "<a href='#" + sections[i].id + "'>" + headings[i].innerHTML +  "</a>";
-  }
+  let headings = document.getElementsByClassName(
+    "tocify-item list-group-item"
+  );
 
-  
-};
+  let sections = document.getElementsByClassName(
+    "section"
+  );
+
+  for (let i = 0; i < headings.length; i++) {
+    headings[i].innerHTML =
+      "<a href='#" +
+      sections[i].id +
+      "'>" +
+      headings[i].innerHTML +
+      "</a>";
+  }
+}
 
 // Instruct web browser to run above function when loaded
 window.onload = tabOrder;

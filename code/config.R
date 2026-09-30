@@ -1,9 +1,14 @@
-# Colour/logo options: ####
+# ##############################################################################
+# Configuration
+# Sets branding, packages, functions and report metadata
+# ##############################################################################
 
-# nics_theme - can be: teo, daera, dfc, de,dfe, dof, dfi, doh, doj, bso, adr
-# Enter the department below in quotes. Use the exact match from the list above
+# Departmental branding --------------------------------------------------------
 
+# Available themes:
+# teo, daera, dfc, de, dfe, dof, dfi, doh, doj, bso, adr
 nics_theme <- "dof"
+
 bilingual <- TRUE
 
 # INSTALL PACKAGES  ####
@@ -33,34 +38,49 @@ packages <- c(
   "here"
 )
 
-
 for (p in packages) {
   if (!p_isinstalled(p)) {
     print(p)
     install.packages(p)
   }
-  
-  dependencies <- p_depends(p, character.only = TRUE)$Imports
-  
+
+  dependencies <- p_depends(
+    p,
+    character.only = TRUE
+  )$Imports
+
   for (d in dependencies) {
     if (!p_isinstalled(d)) {
       print(d)
       install.packages(d)
     }
   }
-  
-  library(p, character.only = TRUE)
+
+  library(
+    p,
+    character.only = TRUE
+  )
 }
 
-# Sources the Functions.R file
-
-for (file in list.files(path = here("code/functions"))) {
-  source(here("code/functions", file))
+# Source all functions
+for (file in list.files(
+  path = here::here(
+    "code",
+    "functions"
+  )
+)
+) {
+  source(
+    here::here(
+      "code",
+      "functions",
+      file
+    )
+  )
 }
-
-# Set the report title, NISRA logo and alternative text
 
 # NISRA logo
+
 if (bilingual == TRUE) {
   nisra_logo <-
     here("images/nisra-only-white.svg")
@@ -70,19 +90,24 @@ if (bilingual == TRUE) {
 
 nisra_logo <- paste0(
   "data:image/svg+xml,",
-  readLines(nisra_logo) %>%
-    paste(collapse = " ") %>%
+  readLines(nisra_logo) |>
+    paste(collapse = " ") |>
     encodeURIComponent()
 )
 
 nisra_alt <- "NISRA logo, links to NISRA homepage"
 
-# Departmental logo, alternative text and link to the department website
+# Departmental logo, alternative text
 
 dep_logo <- encodeURIComponent(
-  paste0(
-    here(), "/images/dept_logos/logo-white-unstacked-",
-    nics_theme, ".svg"
+  here::here(
+    "images",
+    "dept_logos",
+    paste0(
+      "logo-white-unstacked-",
+      nics_theme,
+      ".svg"
+    )
   )
 )
 
@@ -91,9 +116,12 @@ dep_alt <- paste(
   "logo, links to ",
   toupper(nics_theme),
   "homepage"
-  )
+)
 
-## Get date last updated time for the report
+# Report metadata
 
 last_updated <- Sys.Date()
-last_updated_formatted <- format(last_updated, "%d %B %Y")
+last_updated_formatted <- format(
+  last_updated,
+  "%d %B %Y"
+)

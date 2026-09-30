@@ -1,20 +1,35 @@
-library(here)
+source(
+  here("code", "config.R")
+)
 
-source(here("code/config.R"))
-
-df_myes <- read.csv(paste0(
-  here(),
-  "/images/local-government-districts-by-single-year-of-age-",
-  "and-gender-mid-2001-to-mid-2022.csv"
-))
+# Load data
+df_myes <- read.csv(
+  here(
+    "images",
+    paste0(
+      "local-government-districts-by-single-year-of-age-",
+      "and-gender-mid-2001-to-mid-2022.csv"
+    )
+  )
+)
 
 names(df_myes) <- tolower(names(df_myes))
 
-#### Creating variables for use in code and Rmd ####
+# Create variables for use in code and R Markdown
 earliest_year <- min(df_myes$mid_year_ending)
 latest_year <- max(df_myes$mid_year_ending)
 
-df_mye_year_gender_t <- df_myes %>%
-  group_by(mid_year_ending, gender) %>%
-  summarise(ni_pop_total = sum(population_estimate)) %>%
-  pivot_wider(names_from = gender, values_from = ni_pop_total)
+# Population totals by year and gender
+df_mye_year_gender_t <- df_myes |>
+  group_by(
+    mid_year_ending,
+    gender
+  ) |>
+  summarise(
+    ni_pop_total = sum(population_estimate),
+    .groups = "drop"
+  ) |>
+  pivot_wider(
+    names_from = gender,
+    values_from = ni_pop_total
+  )
